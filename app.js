@@ -28,7 +28,12 @@ io.on('connection', function(socket){
             }
         }
     });
+    socket.on("bulletCreated", function(data){
+        data.id = socket.id;
+        socket.broadcast.emit('bulletCreated', data);
+    });
 
+    //2.3311417 : 2.5149996
     socket.on("playerMoved", function(data){
         data.id = socket.id;
         socket.broadcast.emit('playerMoved', data);
